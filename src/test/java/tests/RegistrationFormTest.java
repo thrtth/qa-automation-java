@@ -31,18 +31,27 @@ public class RegistrationFormTest {
         $("#state input").setValue("Haryana").pressEnter();
         $("#city input").setValue("Panipat").pressEnter();
         $("#submit").click();
+
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".modal-body").shouldHave(
-                Condition.text("Nick Testov"),
-                Condition.text("Testov@test.test"),
-                Condition.text("Male"),
-                Condition.text("1234567890"),
-                Condition.text("22 October,2000"),
-                Condition.text("Arts"),
-                Condition.text("Music"),
-                Condition.text("Bug.png"),
-                Condition.text("Text text text"),
-                Condition.text("Haryana Panipat")
-        );
+        $(".modal-body").$(".table").$(byText("Student Name"))
+                .sibling(0).shouldHave(Condition.text("Nick Testov"));
+        $(".modal-body").$(".table").$(byText("Student Email"))
+                .sibling(0).shouldHave(Condition.text("Testov@test.test"));
+        $(".modal-body").$(".table").$(byText("Gender"))
+                .sibling(0).shouldHave(Condition.text("Male"));
+        $(".modal-body").$(".table").$(byText("Mobile"))
+                .sibling(0).shouldHave(Condition.text("1234567890"));
+        $(".modal-body").$(".table").$(byText("Date of Birth"))
+                .sibling(0).shouldHave(Condition.text("22 October,2000"));
+        $(".modal-body").$(".table").$(byText("Subjects"))
+                .sibling(0).shouldHave(Condition.text("Arts"));
+        $(".modal-body").$(".table").$(byText("Hobbies"))
+                .sibling(0).shouldHave(Condition.text("Music"));
+        $(".modal-body").$(".table").$(byText("Picture"))
+                .sibling(0).shouldHave(Condition.text("Bug.png"));
+        $(".modal-body").$(".table").$(byText("Address"))
+                .sibling(0).shouldHave(Condition.text("Text text text"));
+        $(".modal-body").$(".table").$(byText("State and City"))
+                .sibling(0).shouldHave(Condition.text("Haryana Panipat"));
     }
 }
